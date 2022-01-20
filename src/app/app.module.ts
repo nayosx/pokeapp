@@ -3,14 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { HomeLayoutModule} from './layouts/home-layout/home-layout.module';
+import { CommonLayoutModule } from './layouts/common-layout/common-layout.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    HomeLayoutModule,
+    CommonLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
