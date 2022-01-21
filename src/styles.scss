@@ -2,3 +2,27 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*, body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-group>label {
+    bottom: 34px;
+    left: 15px;
+    position: relative;
+    //background-color: white;
+    padding: 0px 5px 0px 5px;
+    font-size: 1.1em;
+    transition: 0.2s;
+    pointer-events: none;
+  }
+  
+  .form-control:focus~label {
+    bottom: 55px;
+  }
+  
+  .form-control:valid~label {
+    bottom: 55px;
+  }
