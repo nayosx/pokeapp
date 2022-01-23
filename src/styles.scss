@@ -3,6 +3,8 @@
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import '~ngx-toastr/toastr';
+@import '~ngx-toastr/toastr-bs4-alert';
 
 *, body {
     font-family: 'Poppins', sans-serif;
@@ -26,3 +28,26 @@
   .form-control:valid~label {
     bottom: 55px;
   }
+
+
+$size-circle: 250px;
+.circle {
+    width: $size-circle;
+    height: $size-circle;
+    display: inline-block;
+    background: #E7EFF5;
+    border: 14px solid #FFFFFF;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+}
+
+.circle-content {
+    height: 100%;
+    .ng-fa-icon {
+      display: flex;
+      align-items: center;
+      font-size: 4rem;
+      color: #9BB8D3;
+    }
+}

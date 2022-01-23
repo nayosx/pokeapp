@@ -7,7 +7,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeLayoutModule} from './layouts/home-layout/home-layout.module';
 import { CommonLayoutModule } from './layouts/common-layout/common-layout.module';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NgbModule,
     HomeLayoutModule,
     CommonLayoutModule,
-    FontAwesomeModule
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col">
+        <p class="text-left">
+            {{nameToShow}}
+        </p>
+    </div>
+    <div class="col">
+        <div class="container-progressbar">
+            <div class="progress special-body-progressbar">
+                <div class="progress-bar" 
+                    [style.width.px]="valueStat" 
+                    role="progressbar" 
+                    aria-valuemin="0"
+                    [attr.aria-valuenow] = "valueStat"
+                    [attr.aria-valuemax] = "maxValue"
+                >
+                <!-- {{valueStat}} / {{maxValue}} -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
