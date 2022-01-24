@@ -8,6 +8,9 @@ import { EStat } from 'src/app/common/enums/pokemon.enum';
 })
 export class ProgressbarComponent implements OnInit {
 
+  @Input('colorBar')
+  public color?: string = '';
+
   @Input('valueStat')
   public valueStat?: number = 0;
 
@@ -22,7 +25,7 @@ export class ProgressbarComponent implements OnInit {
 
   ngOnInit(): void {
 	  this.setValues();
-    console.log(this.valueStat);
+    console.log(this.color);
   }
 
   private setValues(): void {

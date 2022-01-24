@@ -17,6 +17,9 @@ export class MyPokemonsComponent implements OnInit {
   @Input('pokemons')
   public pokemons?: Array<Pokemon> = [];
 
+  @Input('idUser')
+  public idUser?: number = 0;
+
   constructor() {}
 
   ngOnInit(): void {

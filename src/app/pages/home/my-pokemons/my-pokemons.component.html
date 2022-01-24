@@ -5,9 +5,9 @@
         </h2>
     </div>
     <div class="col-md-4 text-right">
-        <button class="btn btn-outline-primary">
+        <a [routerLink]="['/step-two', idUser]" routerLinkActive="router-link-active" class="btn btn-outline-primary" >
             <fa-icon [icon]="'edit'"></fa-icon> Editar
-        </button>
+        </a>
     </div>
 </div>
 <div class="row container-pokemon mb-4 d-flex align-items-center" *ngFor="let pokemon of pokemons">
@@ -21,11 +21,11 @@
         </p>
     </div>
     <div class="col-sm-8">
-        <app-progressbar [nameOfStat]="'hp'" [valueStat]="pokemon.attributes?.hp"></app-progressbar>
-        <app-progressbar [nameOfStat]="'attack'" [valueStat]="pokemon.attributes?.attack"></app-progressbar>
-        <app-progressbar [nameOfStat]="'defense'" [valueStat]="pokemon.attributes?.defense"></app-progressbar>
-        <app-progressbar [nameOfStat]="'special-attack'" [valueStat]="pokemon.attributes?.special_attack"></app-progressbar>
-        <app-progressbar [nameOfStat]="'special-defense'" [valueStat]="pokemon.attributes?.special_defense"></app-progressbar>
-        <app-progressbar [nameOfStat]="'speed'" [valueStat]="pokemon.attributes?.speed"></app-progressbar>
+        <app-progressbar [colorBar]="pokemon.colorBar" [nameOfStat]="'hp'" [valueStat]="pokemon.attributes?.hp"></app-progressbar>
+        <app-progressbar [colorBar]="pokemon.colorBar" [nameOfStat]="'attack'" [valueStat]="pokemon.attributes?.attack"></app-progressbar>
+        <app-progressbar [colorBar]="pokemon.colorBar" [nameOfStat]="'defense'" [valueStat]="pokemon.attributes?.defense"></app-progressbar>
+        <app-progressbar [colorBar]="pokemon.colorBar" [nameOfStat]="'special-attack'" [valueStat]="pokemon.attributes?.special_attack"></app-progressbar>
+        <app-progressbar [colorBar]="pokemon.colorBar" [nameOfStat]="'special-defense'" [valueStat]="pokemon.attributes?.special_defense"></app-progressbar>
+        <app-progressbar [colorBar]="pokemon.colorBar" [nameOfStat]="'speed'" [valueStat]="pokemon.attributes?.speed"></app-progressbar>
     </div>
 </div>

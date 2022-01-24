@@ -7,4 +7,11 @@ enum EStat {
     speed = 'speed'
 }
 
-export { EStat };
+enum EType {
+    grass = 'grass',
+    fire = 'fire',
+    water = 'water',
+    electric = 'electric',
+}
+
+export { EStat, EType };

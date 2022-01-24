@@ -48,6 +48,7 @@ interface Pokemon {
     attributes?: Attributes,
     isSelected?: boolean,
     labelId?:string
+    colorBar?:string
 }
 export {
     Pokemon,

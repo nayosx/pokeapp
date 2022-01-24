@@ -1,5 +1,5 @@
 import { PokeApiService } from "src/app/network/services/poke-api.service";
-import { EStat } from "../enums/pokemon.enum";
+import { EStat, EType } from "../enums/pokemon.enum";
 import { Attributes, Pokemon, Stats, Types } from "../interfaces/pokemon";
 
 class PokemonHelper {
@@ -32,7 +32,8 @@ class PokemonHelper {
             type: this.getTypes(pokemon.types),
             attributes: this.getAttributes(pokemon.stats),
             isSelected: false,
-            labelId: this.getLabelId(pokemon.id || 0)
+            labelId: this.getLabelId(pokemon.id || 0),
+            colorBar: this.getColorBar(pokemon.types)
         };
     }
 
@@ -87,6 +88,28 @@ class PokemonHelper {
             labelId = `#${id}`;
         }
         return labelId;
+    }
+
+    private getColorBar(types?: Array<Types>): string {
+        let color: string = '';
+        let typeName = (types !== undefined)? types[0].type.name : '';
+        switch(typeName) {
+            case EType.water:
+                color = 'bg-info';
+                break;
+            case EType.grass:
+                color = 'bg-success';
+                break;
+            case EType.fire:
+                color = 'bg-danger';
+                break;
+            case EType.electric:
+                color = 'bg-warning';
+                break;
+            default:
+                color = '';
+        }
+        return color;
     }
 }
 
