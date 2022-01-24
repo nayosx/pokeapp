@@ -10,7 +10,8 @@ import {
 } from '@fortawesome/free-regular-svg-icons';
 
 import {
-  faUpload
+  faUpload,
+  faSearch,
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -50,7 +51,8 @@ export class SharedModule {
     library.addIcons(
       farUser,
       farCalendarAlt,
-      faUpload
+      faUpload,
+      faSearch
     );
   }
 }

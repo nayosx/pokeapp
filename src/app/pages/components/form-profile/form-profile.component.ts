@@ -101,6 +101,13 @@ export class FormProfileComponent implements OnInit {
 		let isChild = (years < 18 ) ? true : false;
 		this.labelForDocument = (isChild) ? 'Carnet de Minoridad' : 'DUI';
 		this.form.controls['isChild'].setValue(isChild);
+
+		if(isChild) {
+			this.form.controls['document'].clearValidators();
+			this.form.controls['document'].updateValueAndValidity();
+		} else {
+			this.form.controls['document'].setValidators([Validators.required]);
+		}
 	}
 
 	public fileChange(e: Event): void {

@@ -1,1 +1,28 @@
-<p>pokemons works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <form class="ngx-form" [formGroup]="form" (submit)="onSubmit()">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">
+                    <fa-icon [icon]="'search'"></fa-icon>
+                  </span>
+                </div>
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    formControlName="search" name="search" autocomplete="off"
+                    placeholder="Buscar por índice, nombre..."
+                    (change) = "search($event)"
+                    (keyup)="cleanSearch($event)"
+                />
+                
+                <!-- <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                </div> -->
+            </div>
+            
+            <div class="text-muted">(presione intro para buscar)</div>
+        </form>
+    </div>
+    <ng-container ></ng-container>
+</div>

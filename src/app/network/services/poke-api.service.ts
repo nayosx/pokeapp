@@ -24,11 +24,7 @@ export class PokeApiService {
     return this.http.get<any>(url, this.options);
   }
 
-  public getById(id: number): Observable<any> {
-    return this.http.get<any>(environment.BASE_URL.concat(this.path, '/', `${id}`), this.options);
-  }
-
-  public getByName(name:string):Observable<any> {
-    return this.http.get<any>(environment.BASE_URL.concat(this.path, '/', name), this.options);
+  public get(pokemon: any): Observable<any> {
+    return this.http.get<any>(environment.BASE_URL.concat(this.path, '/', `${pokemon}`), this.options);
   }
 }
