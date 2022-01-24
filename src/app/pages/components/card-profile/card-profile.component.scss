@@ -2,3 +2,12 @@
     background: #FFC600;
     border-radius: 50px;
 }
+
+.card-pokemon-footer {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    strong {
+        font-weight: 800;
+        font-size: 1.2rem;
+    }
+}

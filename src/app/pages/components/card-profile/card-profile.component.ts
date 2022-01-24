@@ -19,8 +19,12 @@ export class CardProfileComponent implements OnInit {
   @Input('user')
   public user: User = {
     name: 'Imágen perfil',
-    photo: ''
+    photo: '',
+    birthday: {year:0}
   }
+
+  @Input('isHome')
+  public isHome: boolean = false;
 
   constructor() { }
 

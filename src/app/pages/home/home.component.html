@@ -1,6 +1,14 @@
 <div class="row">
+    <div class="col-md-12 mb-4">
+        <h1 class="">
+            ¡Hola {{user.name}}!
+            <button class="btn btn-outline-primary">
+                <fa-icon [icon]="'edit'"></fa-icon> Editar perfil
+            </button>
+        </h1>
+    </div>
     <div class="col-md-5 d-flex justify-content-center">
-        <app-card-profile [user]="user" [isFormCreate]="false"></app-card-profile>
+        <app-card-profile [user]="user" [isFormCreate]="false" [isHome]="true"></app-card-profile>
     </div>
     <div class="col-md-7 d-flex justify-content-center">
         <app-my-pokemons [pokemons]="user.pokemons"></app-my-pokemons>
