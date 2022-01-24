@@ -166,6 +166,7 @@ export class PokemonsComponent implements OnInit {
 		removeFromStorage(this.user.id || 0);
 		saveOnstorage(this.user);
 		console.log(this.user);
+		this.redirect();
 	}
 
 	private redirect(): void {
