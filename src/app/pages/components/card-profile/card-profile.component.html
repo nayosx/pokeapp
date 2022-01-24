@@ -1,0 +1,42 @@
+<div class="card-pokemon d-flex align-items-center flex-column" style="width: 392px; height: 600px;">
+    <h2 class="text-center mt-5 mb-5 p-2">{{user.name}}</h2>
+    
+    <div class="text-center p-2">
+        <div class="circle">
+            <div class="circle-content d-flex justify-content-center align-self-center">
+                <ng-container *ngIf="img !== ''">
+                    <img 
+                        [src]=" img || 'http://placehold.it/180'" 
+                        class="rounded-circle" 
+                        data-holder-rendered="true"
+                    />
+                </ng-container>
+                <ng-container *ngIf="img == ''">
+                    <fa-icon [icon]="['far', 'user']"></fa-icon>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="!isFormCreate">
+        <div class="d-flex align-items-end mt-auto p-2 mb-4">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between pl-4 pr-4">
+                    <span>
+                        <strong>Pasatiempo:</strong>
+                    </span>
+                    <span>
+                        {{user.name}}
+                    </span>
+                </div>
+                <div class="col-12 d-flex justify-content-between pl-4 pr-4">
+                    <span>
+                        <strong>Edad:</strong>
+                    </span>
+                    <span>
+                        {{user.age}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>

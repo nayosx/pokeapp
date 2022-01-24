@@ -1,0 +1,32 @@
+<div class="row">
+
+    <div class="col-md-12 mb-4">
+        <h1 class="title">
+            <strong>¡Hola!</strong> Configuremos tu perfil
+        </h1>
+        <p>
+            Queremos conocerte mejor.
+        </p>
+    </div>
+
+    <div class="col-md-5 d-flex justify-content-center">
+        <app-card-profile [image]="imgToUpdate"></app-card-profile>
+    </div>
+    <div class="col-md-7 d-flex justify-content-center">
+        <div>
+            <h2 class="title">
+                Tu información
+            </h2>
+            <p class="font-weight-light mb-4">
+                Completa la siguiente información para completar tu perfil
+                <br />
+                <small class="text-muted mt--1">
+                    Los campos con <strong>*</strong> son requeridos
+                </small>
+            </p>
+            
+            <app-form-profile (imageEvent) = "updateImage($event)"></app-form-profile>
+        </div>
+    </div>
+
+</div>

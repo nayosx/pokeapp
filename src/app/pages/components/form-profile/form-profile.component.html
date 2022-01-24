@@ -1,0 +1,98 @@
+<form class="ngx-form" [formGroup]="form" (submit)="onSubmit()">
+    <div>
+        <div class="form-group mb-4">
+            <label for="">Nombre *</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                formControlName="name" name="name" autocomplete="off"
+                placeholder="Gary Oak" 
+            />
+            <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+                <small *ngIf="form.controls['name'].errors?.['required']" class="text-danger">
+                    Por favor ingresa un nombre
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="">Pasatiempo favorito</label>
+            <ng-select 
+                [items]="items" 
+                bindLabel="label" 
+                labelForId="id" name="hobby" formControlName="hobby"
+                placeholder="Selecciona un pasatiempo">
+            </ng-select>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="">Cumpleaños *</label>
+            <div class="input-group">
+                <input 
+                    class="form-control" placeholder="yyyy-mm-dd" name="birthday"
+                    formControlName="birthday"
+                    [minDate] = "{year: 1960, month: 1, day: 1}"
+                    ngbDatepicker
+                    #d="ngbDatepicker" (dateSelect)="onDateSelect($event)" 
+                >
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                        <fa-icon [icon]="['far', 'calendar-alt']"></fa-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div *ngIf="form.controls['birthday'].invalid && (form.controls['birthday'].dirty || form.controls['birthday'].touched)">
+                <small *ngIf="form.controls['birthday'].errors?.['required']" class="text-danger">
+                    Por favor ingresa un nombre
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="">{{labelForDocument}}</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                formControlName="document" name="document"
+                autocomplete="off" placeholder="{{labelForDocument}}" 
+            />
+
+            <div *ngIf="form.controls['document'].invalid && (form.controls['document'].dirty || form.controls['document'].touched)">
+                <small *ngIf="form.controls['document'].errors?.['required']" class="text-danger">
+                    Por favor ingresa un nombre
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group mb-4">
+            <label for="">Foto de perfil *</label>
+
+            <div class="custom-file">
+                <input 
+                    type="file" 
+                    class="custom-file-input" 
+                    id="customFileLangHTML" 
+                    formControlName="photo"
+                    (change)="fileChange($event)"
+                >
+                <label 
+                    class="custom-file-label" 
+                    for="customFileLangHTML"
+                    data-browse="Buscar">
+                    {{labelForFile}}
+                </label>
+            </div>
+
+            <div *ngIf="form.controls['photo'].invalid && (form.controls['photo'].dirty || form.controls['photo'].touched)">
+                <small *ngIf="form.controls['photo'].errors?.['required']" class="text-danger">
+                    Por favor ingresa un nombre
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group mb-4 text-center">
+            <button class="btn btn-primary" [disabled]="!form.valid">Continuar</button>
+        </div>
+    </div>
+</form>
