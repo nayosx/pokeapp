@@ -7,7 +7,7 @@ import { StepTwoComponent } from 'src/app/pages/register/step-two/step-two.compo
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: 'home/:id',
     component: HomeComponent
   },
   {

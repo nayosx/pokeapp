@@ -12,6 +12,7 @@ import {
 import {
   faUpload,
   faSearch,
+  faMinusCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -52,7 +53,8 @@ export class SharedModule {
       farUser,
       farCalendarAlt,
       faUpload,
-      faSearch
+      faSearch,
+      faMinusCircle
     );
   }
 }

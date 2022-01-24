@@ -1,10 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { User } from 'src/app/common/interfaces/user';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-card-profile',
   templateUrl: './card-profile.component.html',
-  styleUrls: ['./card-profile.component.scss']
+  styleUrls: ['./card-profile.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CardProfileComponent implements OnInit {
 
@@ -14,6 +16,7 @@ export class CardProfileComponent implements OnInit {
   @Input('image')
   public img?: string = '';
 
+  @Input('user')
   public user: User = {
     name: 'Imágen perfil',
   }
@@ -21,6 +24,8 @@ export class CardProfileComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.img = this.user.photo;
+    this.user.age = dayjs().year() - (this.user.birthday?.year || 0);
   }
 
 }

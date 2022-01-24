@@ -88,8 +88,7 @@ export class FormProfileComponent implements OnInit {
 			user.nickname = this.nextNickName;
 			user.photo = this.photoBase64;
 			user.pokemons = [];
-			this.users.push(user);
-			saveOnstorage(this.users);
+			saveOnstorage(user);
 		} else {
 
 		}

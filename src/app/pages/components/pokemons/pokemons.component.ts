@@ -1,31 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PokemonHelper } from 'src/app/common/helpers/pokemon.helper';
 import { Pokemon } from 'src/app/common/interfaces/pokemon';
 import { Pokemons } from 'src/app/common/interfaces/pokemons';
 import { PokeApiService } from 'src/app/network/services/poke-api.service';
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/common/interfaces/user';
+
+import { removeFromStorage, saveOnstorage } from 'src/app/common/helpers/storage.helper';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-pokemons',
 	templateUrl: './pokemons.component.html',
-	styleUrls: ['./pokemons.component.scss']
+	styleUrls: ['./pokemons.component.scss'],
+	encapsulation: ViewEncapsulation.None
 })
 export class PokemonsComponent implements OnInit {
 
+	@Input('user')
+	public user: User = {};
 	public form: FormGroup;
-	public pokemons:Array<Pokemon> = [];
-	public pokemonsTemp:Array<Pokemon> = [];
+	public pokemons: Array<Pokemon> = [];
+	public pokemonsTemp: Array<Pokemon> = [];
+	public pokemonsSelected: Array<Pokemon> = [];
 	private pokemonHelper: PokemonHelper;
 
 	public pokemonsAPI: Pokemons = {};
 	public pokemonsUrl: Array<string> = [];
 
 	private readonly firstGenOfPokemon: number = 151;
-	private isNotGetPokemon:boolean = false;
+	public isNotGetPokemon:boolean = false;
 
 	constructor(
 		private formBuilder: FormBuilder,
-		private pokeService: PokeApiService
+		private pokeService: PokeApiService,
+		private toastr: ToastrService,
+		private router: Router
 	) {
 		this.form = this.formBuilder.group({
 			search: [''],
@@ -73,8 +84,14 @@ export class PokemonsComponent implements OnInit {
 	public cleanSearch(e: Event): void {
 		let {value} = e.target as HTMLInputElement;
 		if(value.length == 0) {
-			this.pokemons = [...this.pokemonsTemp];
+			this.forceClean();
 		}
+	}
+
+	public forceClean(): void {
+		this.pokemons = [];
+		this.pokemons = [...this.pokemonsTemp];
+		this.form.reset();
 	}
 
 	private getPokemons(): void {
@@ -104,13 +121,54 @@ export class PokemonsComponent implements OnInit {
 		  Promise.all(promises)
 			.then(pokemons => {
 			  this.pokemons = pokemons as Array<Pokemon>;
-			  this.pokemonsTemp = pokemons as Array<Pokemon>;
+			  this.pokemonsTemp = this.pokemons.map(p => p);
 			  this.isNotGetPokemon = false;
 			})
 			.catch(() => {
 			  this.isNotGetPokemon = true;
 			});
 		}
-	  }
+	}
 
+	public selectedPokemon(pokemon: Pokemon): void {
+
+		if(this.pokemonsSelected.length < 3) {
+			if(pokemon.isSelected) {
+				console.log('ya esta seleccionado');
+				pokemon.isSelected = false;
+				this.pokemonsSelected = this.removeFromSelected(pokemon.id || 0);
+			} else{
+				pokemon.isSelected = true;
+				this.pokemonsSelected.push(pokemon);
+			}
+		} else{
+			console.log('ya no se puede seleccionar otro');
+			this.toastr.error('Ya tiene los 3 pokemon seleccionados');
+		}
+	}
+
+
+	private removeFromSelected(id:number): Array<Pokemon> {
+		return this.pokemonsSelected.filter(pokemon => pokemon.id !== id);
+	}
+
+	public removeAllSelected(): void {
+		this.pokemonsSelected = [...[]];
+		this.pokemons = [];
+		this.pokemons = [...this.pokemonsTemp];
+
+		console.log(this.pokemons);
+	}
+
+	public savePokemons(): void{
+		console.log('guardando pokemons');
+		this.user.pokemons = this.pokemonsSelected;
+		removeFromStorage(this.user.id || 0);
+		saveOnstorage(this.user);
+		console.log(this.user);
+	}
+
+	private redirect(): void {
+		this.router.navigate(['/home', this.user.id]);
+	}
 }

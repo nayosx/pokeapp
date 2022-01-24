@@ -16,13 +16,41 @@
                     (keyup)="cleanSearch($event)"
                 />
                 
-                <!-- <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-                </div> -->
+                <div class="input-group-append">
+                    <button 
+                        class="btn btn-secondary" 
+                        type="button" id="button-addon2"
+                        (click)="forceClean()"
+                    ><fa-icon [icon]="'minus-circle'"></fa-icon> Limpiar busqueda</button>
+                </div>
             </div>
             
-            <div class="text-muted">(presione intro para buscar)</div>
+            <div class="text-muted">presione intro para buscar</div>
         </form>
     </div>
-    <ng-container ></ng-container>
+    <ng-container *ngIf="!isNotGetPokemon && pokemons.length > 0">
+        <div class="col-md-4" *ngFor="let pokemon of pokemons">
+            <div class="container-pokemon" (click)="selectedPokemon(pokemon)" [class.container-pokemon-selected]="pokemon.isSelected">
+                <img [src]="pokemon.img" alt="">
+                <div class="title-pokemon">
+                    <span class="pr-1">{{pokemon.labelId}}</span>
+                    <span class="pl-1">{{pokemon.name}}</span>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="col-md-12 text-center mt-5">
+        
+        <!-- <button
+            class="btn btn-danger"
+            (click)="removeAllSelected()"
+        >Limpiar pokemon seleccionados</button> -->
+
+        <button
+            class="btn btn-pokemon"
+            (click)="savePokemons()"
+            [disabled]="pokemonsSelected.length < 3"
+        >Guradar</button>
+
+    </div>
 </div>

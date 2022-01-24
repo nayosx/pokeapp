@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-md-5 d-flex justify-content-center">
-        <app-card-profile [image]="''"></app-card-profile>
+        <app-card-profile [user]="user" [isFormCreate]="false"></app-card-profile>
     </div>
     <div class="col-md-7 d-flex justify-content-center">
         <div>
@@ -20,7 +20,7 @@
             <p class="font-weight-light mb-4">
                 Selecciona 3 Pokémon para que sean parte de tu equipo
             </p>
-            <app-pokemons></app-pokemons>
+            <app-pokemons [user]="user"></app-pokemons>
         </div>
     </div>
 

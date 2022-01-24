@@ -31,7 +31,8 @@ class PokemonHelper {
             img: pokemon.sprites?.other.home.front_default,
             type: this.getTypes(pokemon.types),
             attributes: this.getAttributes(pokemon.stats),
-            isSelected: false
+            isSelected: false,
+            labelId: this.getLabelId(pokemon.id || 0)
         };
     }
 
@@ -70,6 +71,22 @@ class PokemonHelper {
             type += `${element.type.name}/`;
         });
         return  type.slice(0, -1);
+    }
+
+    private getLabelId(id:number): string {
+        let labelId: string = '';
+
+        if(id >= 1 && id <=9) {
+            labelId = `#00${id}`;
+        }
+        if(id >= 10 && id <=99) {
+            labelId = `#0${id}`;
+        }
+        
+        if(id >=100) {
+            labelId = `#${id}`;
+        }
+        return labelId;
     }
 }
 

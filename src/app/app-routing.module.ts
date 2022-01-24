@@ -7,7 +7,7 @@ import { Error404Component } from './pages/error404/error404.component';
 const routes: Routes = [
   { 
     path: '', 
-    redirectTo: '/home', 
+    redirectTo: '/step-one', 
     pathMatch: 'full' 
   },
   {

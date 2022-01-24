@@ -46,7 +46,8 @@ interface Pokemon {
     type?: string,
     img?: string,
     attributes?: Attributes,
-    isSelected?: boolean
+    isSelected?: boolean,
+    labelId?:string
 }
 export {
     Pokemon,

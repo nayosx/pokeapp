@@ -8,6 +8,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeLayoutModule} from './layouts/home-layout/home-layout.module';
 import { CommonLayoutModule } from './layouts/common-layout/common-layout.module';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +17,7 @@ import { CommonLayoutModule } from './layouts/common-layout/common-layout.module
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     NgbModule,
     HomeLayoutModule,
     CommonLayoutModule,
